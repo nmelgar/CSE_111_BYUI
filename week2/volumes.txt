@@ -1,0 +1,6 @@
+
+Current date:  2022-04-29
+Width = 25.0
+Aspect ratio of the tire is = 26.0
+Diameter of the wheel is = 27.0
+Volume of the tire is = 0.35
