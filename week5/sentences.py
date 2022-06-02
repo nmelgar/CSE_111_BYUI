@@ -4,11 +4,34 @@ import random
 def main():
     quantity_1 = 1
     quantity_2 = 2
-    determiner = get_determiner(quantity_1)
-    noun = get_noun(quantity_1)
-    verb = get_verb(quantity_1, "present")
-    sentence = f"{determiner.capitalize()} {noun} {verb}"
-    print(sentence)
+    tense = ["past", "present", "future"]
+
+    # single past sentence
+    determiner_1 = get_determiner(quantity_1)
+    noun_1 = get_noun(quantity_1)
+    verb_1 = get_verb(quantity_1, tense[0])
+    sentence_1 = f"{determiner_1.capitalize()} {noun_1} {verb_1}"
+    print(sentence_1)
+
+    # single present sentence
+    determiner_2 = get_determiner(quantity_1)
+    noun_2 = get_noun(quantity_1)
+    verb_2 = get_verb(quantity_1, tense[1])
+    sentence_2 = f"{determiner_2.capitalize()} {noun_2} {verb_2}"
+    print(sentence_2)
+
+    # single future
+    determiner_3 = get_determiner(quantity_1)
+    noun_3 = get_noun(quantity_1)
+    verb_3 = get_verb(quantity_1, tense[2])
+    sentence_3 = f"{determiner_3.capitalize()} {noun_3} {verb_3}"
+    print(sentence_3)
+
+    # plural past
+
+    # plural present
+
+    # plural future
 
 
 def get_determiner(quantity):
