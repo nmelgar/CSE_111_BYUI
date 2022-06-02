@@ -28,10 +28,25 @@ def main():
     print(sentence_3)
 
     # plural past
+    determiner_4 = get_determiner(quantity_2)
+    noun_4 = get_noun(quantity_2)
+    verb_4 = get_verb(quantity_2, tense[0])
+    sentence_4 = f"{determiner_4.capitalize()} {noun_4} {verb_4}"
+    print(sentence_4)
 
     # plural present
+    determiner_5 = get_determiner(quantity_2)
+    noun_5 = get_noun(quantity_2)
+    verb_5 = get_verb(quantity_2, tense[1])
+    sentence_5 = f"{determiner_5.capitalize()} {noun_5} {verb_5}"
+    print(sentence_5)
 
     # plural future
+    determiner_6 = get_determiner(quantity_2)
+    noun_6 = get_noun(quantity_2)
+    verb_6 = get_verb(quantity_2, tense[2])
+    sentence_6 = f"{determiner_6.capitalize()} {noun_6} {verb_6}"
+    print(sentence_6)
 
 
 def get_determiner(quantity):
