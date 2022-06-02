@@ -9,6 +9,7 @@ def test_prefix():
     Parameters: none
     Return: nothing
     """
+
     assert prefix("cat", "catalog") == "cat"
     assert prefix("", "") == ""
     assert prefix("", "correct") == ""
