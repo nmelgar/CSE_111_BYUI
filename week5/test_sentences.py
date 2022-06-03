@@ -84,10 +84,11 @@ def test_get_verb():
 
     # 4 future
     future_verbs = ["will drink", "will eat", "will grow", "will laugh",
-                 "will think", "will run", "will sleep", "will talk",
-                 "will walk", "will write"]
+                    "will think", "will run", "will sleep", "will talk",
+                    "will walk", "will write"]
     for _ in range(4):
         verb = get_verb(1, "future")
     assert verb in future_verbs
+
 
 pytest.main(["-v", "--tb=line", "-rN", __file__])
