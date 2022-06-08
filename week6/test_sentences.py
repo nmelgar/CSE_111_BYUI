@@ -103,9 +103,34 @@ def test_get_preposition():
     assert preposition in prepositions
 
 
+
 def test_get_prepositional_phrase():
-    phrase_singular = get_prepositional_phrase(1)
-    phrase_plural = get_prepositional_phrase(2)
+    """This function will call the get_preposition, get_determiner and 
+    get_noun functions to check that they contain certain 
+    word while creating the prepositional phrase."""
+    
+    prepositions = ["about", "above", "across", "after", "along",
+                    "around", "at", "before", "behind", "below",
+                    "beyond", "by", "despite", "except", "for",
+                    "from", "in", "into", "near", "of",
+                    "off", "on", "onto", "out", "over",
+                    "past", "to", "under", "with", "without"]
+    for _ in range(0, len(prepositions)):
+        preposition = get_preposition()
+    assert preposition in prepositions
+
+    determiners = ["a", "one", "some", "many", "the"]
+    for _ in range(0, len(determiners)):
+        determiner = get_determiner(1)
+    assert determiner in determiners
+
+    nouns = ["bird", "boy", "car", "cat", "child",
+             "dog", "girl", "man", "rabbit", "woman", "birds", "boys", "cars", "cats", "children",
+             "dogs", "girls", "men", "rabbits", "women"]
+    for _ in range(0, len(nouns)):
+        noun = get_noun(1)
+    assert noun in nouns
+
 
 
 pytest.main(["-v", "--tb=line", "-rN", __file__])
