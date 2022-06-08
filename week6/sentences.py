@@ -12,7 +12,8 @@ def main():
         determiner = get_determiner(quantity_1)
         noun = get_noun(quantity_1)
         verb = get_verb(quantity_1, tense[counter])
-        sentence = (f"{determiner.capitalize()} {noun} {verb}")
+        prep_phrase = get_prepositional_phrase(quantity_1)
+        sentence = (f"{determiner.capitalize()} {noun} {verb} {prep_phrase}")
         print(sentence)
         i += 1
         counter += 1
@@ -23,7 +24,8 @@ def main():
         determiner = get_determiner(quantity_2)
         noun = get_noun(quantity_2)
         verb = get_verb(quantity_2, tense[counter])
-        sentence = (f"{determiner.capitalize()} {noun} {verb}")
+        prep_phrase = get_prepositional_phrase(quantity_2)
+        sentence = (f"{determiner.capitalize()} {noun} {verb} {prep_phrase}")
         print(sentence)
         j += 1
         counter += 1
