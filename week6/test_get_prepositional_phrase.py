@@ -7,7 +7,13 @@ import pytest
 def test_get_prepositional_phrase():
     phrase_singular = get_prepositional_phrase(1)
     phrase_plural = get_prepositional_phrase(2)
-    return (f"hello , {phrase_singular}")
+    
+    split_phrase = phrase_singular.split()
+    preposition = split_phrase[0]
+    determiner = split_phrase[1]
+    noun = split_phrase[2] 
+    return (f"{preposition}, {determiner}, {noun} ")
+    # return (f"hello , {phrase_singular}")
 
 
 print(test_get_prepositional_phrase())
