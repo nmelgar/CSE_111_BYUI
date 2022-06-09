@@ -8,7 +8,7 @@ def main():
     numbers = [16.2, 75.1, 52.3]
     for number in numbers:
         print(number)
-    append_random_numbers(numbers, 160)
+    append_random_numbers(numbers, 16)
 
     print("\nNew List\n")
     for number in numbers:
