@@ -100,17 +100,17 @@ def print_death_age(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
+    # NAME_INDEX = 0
+    # GENDER_INDEX = 1
+    # BIRTH_YEAR_INDEX = 2
+    # DEATH_YEAR_INDEX = 3
+    for person, values in people_dict.items():
+        name = values[NAME_INDEX]
+        birth_year = values[BIRTH_YEAR_INDEX]
+        death_year = values[DEATH_YEAR_INDEX]
+        age = death_year - birth_year
 
-    for person in people_dict.items():
-        key = person[0]
-        value = person[1]
-
-        name = value[NAME_INDEX]
-        birth_year = value[BIRTH_YEAR_INDEX]
-        death_year = value[DEATH_YEAR_INDEX]
-        age_when_death = death_year - birth_year
-
-        print(f"Name: {name}. Age when death: {age_when_death}.")
+        print(f"Name: {name}, Age when death: {age}.")
 
 
 def count_genders(people_dict):
@@ -123,22 +123,15 @@ def count_genders(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    males = 0
-    females = 0
-    for person in people_dict.items():
-        key = person[0]
-        value = person[1]
-
-        gender = value[GENDER_INDEX]
-
+    total_males = 0
+    total_females = 0
+    for person, values in people_dict.items():
+        gender = values[GENDER_INDEX]
         if gender == "M":
-            males += 1
+            total_males += 1
         elif gender == "F":
-            females += 1
-    
-    print(f"There are: {males} males.\nThere are: {females} females.")
-
-
+            total_females += 1
+    print(f"Females: {total_females}. Males: {total_males}.")
 
 
 def print_marriages(marriages_dict, people_dict):
@@ -155,16 +148,31 @@ def print_marriages(marriages_dict, people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    for marriage in marriages_dict.items():
-        key = marriages_dict[0]
-        value = marriages_dict[1]
+    # HUSBAND_KEY_INDEX = 0
+    # WIFE_KEY_INDEX = 1
+    # WEDDING_YEAR_INDEX = 2
 
-        husband_key = value[HUSBAND_KEY_INDEX]
-        wife_key = value[WIFE_KEY_INDEX]
-        wedding_year = value[WEDDING_YEAR_INDEX]
+    for marriage_key, marriage_list in marriages_dict.items():
+        husband_key = marriage_list[HUSBAND_KEY_INDEX]
+        wife_key = marriage_list[WIFE_KEY_INDEX]
+        wedding_year = marriage_list[WEDDING_YEAR_INDEX]
 
+        husband_list = people_dict[husband_key]
+        husband_name = husband_list[NAME_INDEX]
+        husband_birth = husband_list[BIRTH_YEAR_INDEX]
 
+        husband_age = wedding_year - husband_birth
 
+        wife_list = people_dict[wife_key]
+        wife_name = wife_list[NAME_INDEX]
+        wife_birth = wife_list[BIRTH_YEAR_INDEX]
+
+        wife_age = wedding_year - wife_birth
+
+        print(f"{husband_name} {husband_age} || "
+              f"{wife_name} {wife_age}")
+
+        # age = death_year - birth_year
 # If this file was executed like this:
 # > python teach_solution.py
 # then call the main function. However, if this file
