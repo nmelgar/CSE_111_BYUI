@@ -1,14 +1,35 @@
+from ast import If
 from asyncore import read
 import csv
+from itertools import product
 
 
 def main():
-    order1 = "D150"
-    list1 = read_dict("week9/products.csv", 0)
-    order = list1[order1]
-    order2 = order[0]
-    # print(list1)
-    print(order2)
+    products_dict = read_dict("week9/products.csv", 0)
+    print(products_dict)
+
+    with open("week9/request.csv", "rt") as csv_file:
+        reader = csv.reader(csv_file)
+        next(reader)
+
+        # for the requested elements
+        REQUESTED_PRODUCT_INDEX = 0
+        REQUESTED_QUANTITY_INDEX = 1
+
+        # for the products_dict elements
+        PRODUCT_NAME_INDEX = 1
+        PRODUCT_COST_INDEX = 2
+        for row_list in reader:
+            requested_product_number = row_list[REQUESTED_PRODUCT_INDEX]
+            requested_quantity = row_list[REQUESTED_QUANTITY_INDEX]
+
+            for key, product in products_dict.items():
+                name = product[PRODUCT_NAME_INDEX]
+                cost = product[PRODUCT_COST_INDEX]
+                final_cost = float(cost) * float(requested_quantity)
+                if requested_product_number == key:
+                    print(
+                        f"Item: {name}, Quantity: {requested_quantity}, Price: ${cost}")
 
 
 def read_dict(filename, key_column_index):
@@ -47,6 +68,7 @@ def read_dict(filename, key_column_index):
             # from the column that contains the key.
             # This will use the column that will be used as key
             key = row_list[key_column_index]
+            price = row_list[2]
 
             # Store the data from the current row
             # into the dictionary.
