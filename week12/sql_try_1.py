@@ -59,6 +59,24 @@ mycursor = mydb.cursor()
 # mydb.commit()
 
 # -----> STEP 7
+# select all records from the "customers" table
+# mycursor.execute("SELECT * FROM customers")
+
+# We use the fetchall() method, which fetches all rows from 
+# the last executed statement.
+# myresult = mycursor.fetchall()
+
+# for x in myresult:
+#   print(x)
+
+# -----> STEP 8
+# fetch one row (will return the first row of the result)
+# mycursor.execute("SELECT * FROM customers")
+
+# myresult = mycursor.fetchone()
+
+# print(myresult) 
+
 
 
 # -------------------------------------------
