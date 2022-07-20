@@ -78,6 +78,7 @@ def display_menu():
     for item in menu_items:
         print(f"{counter}. {item}")
         counter += 1
+    return menu_items
 
 
 def add_task():
