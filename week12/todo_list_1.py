@@ -14,7 +14,8 @@ mycursor = mydb.cursor()
 # create a new db
 # mycursor.execute("CREATE DATABASE tasks")
 
-# creating a table with the tasks
+# create a new table with the tasks of the user
+# the columns where modified
 # mycursor.execute(
 #     "CREATE TABLE tasks (id INT AUTO_INCREMENT PRIMARY KEY, task VARCHAR(255))")
 
@@ -32,12 +33,17 @@ def main():
         print("|----   -----   -------------------------------|")
         display_tasks()
         print("|----------------------------------------------|")
+        # display menu to the screen
         display_menu()
+        # the user will choose what to do
         user_choice = int(input("What you want to do? (1, 2 or 3) "))
+        # add task to the todo list
         if user_choice == 1:
             add_task()
+        # delete task from the todo list
         elif user_choice == 2:
             delete_task()
+        # exit the program
         elif user_choice == 3:
             run = False
 
@@ -52,8 +58,13 @@ def display_tasks():
 
     myresult = mycursor.fetchall()
 
+    ID_INDEX = 0
+    TASK_INDEX = 1
+    IMPORTANCE_INDEX = 2
+
     for row in myresult:
-        print(f"|---{row[0]} | {row[1]} | {row[2]}")
+        print(
+            f"|---{row[ID_INDEX]} | {row[TASK_INDEX]} | {row[IMPORTANCE_INDEX]}")
 
 
 def display_menu():
@@ -65,7 +76,6 @@ def display_menu():
     counter = 1
     print("\n")
     for item in menu_items:
-
         print(f"{counter}. {item}")
         counter += 1
 
@@ -86,7 +96,6 @@ def add_task():
     assert importance_level == "H" or importance_level == "M" or importance_level == "L", "Please enter a valid importance level"
 
     # insert into table using INSERT INTO statement
-
     sql = "INSERT INTO tasks (task, importance) VALUES (%s, %s)"
 
     values_to_insert = (new_task, importance_level)
@@ -103,7 +112,7 @@ def delete_task():
     Parameters: It take no parameters.
     """
     user_choice = input("Enter the ID of the task you want to delete: ")
-
+    # delete from table using DELETE FROM statement
     sql = "DELETE FROM tasks WHERE id = %s"
 
     task_id = (user_choice, )
