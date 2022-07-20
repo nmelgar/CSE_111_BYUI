@@ -12,18 +12,25 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-
 def test_add_task():
     """This function will test add a tasks and its importance to
     the db
     Parameters: It take no parameters.
     """
-    # create a list and randomly choose the importance level of a task
+    #create a list and randomly choose the importance level of a task
     importance_list = ["H", "M", "L"]
     random_number = random.randint(0, (len(importance_list)))
     importance_level = importance_list[random_number]
     assert importance_level == "H" or importance_level == "M" or importance_level == "L", "Please enter a valid importance level"
 
+    # insert into table using INSERT INTO statement
+    sql = "INSERT INTO tasks (task, importance) VALUES (%s, %s)"
+    new_task = "Test task"
+    values_to_insert = (new_task, importance_level)
+
+    mycursor.execute(sql, values_to_insert)
+
+    mydb.commit()
 
 def test_display_menu():
     """
@@ -35,6 +42,5 @@ def test_display_menu():
     expected_items = ["Add Task", "Delete Task", "Exit"]
     current_items = display_menu()
     assert current_items == expected_items
-
 
 pytest.main(["-v", "--tb=line", "-rN", __file__])
